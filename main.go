@@ -20,6 +20,11 @@ func main() {
 	var err error
 	var webHookURL string = os.Getenv("SLACKURL")
 
+	if !strings.Contains(webHookURL, "http") {
+		fmt.Println("Specify SLACKURL envirinment variable and export")
+		return
+	}
+
 	flag.Parse()
 	if flag.NArg() > 1 {
 		err = fmt.Errorf("too many args")
